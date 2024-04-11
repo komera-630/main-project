@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse separate;
+            border-spacing: 0;
+            
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        @media screen and (max-width: 600px) {
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr { border: 1px solid #ccc; }
+            td { 
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+                padding-left: 50%; 
+            }
+            td:before { 
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+            }
+            td:nth-of-type(1):before { content: "Specification"; }
+            td:nth-of-type(2):before { content: "RhynoSE03 Lite"; }
+            td:nth-of-type(3):before { content: "RhynoSE03"; }
+            td:nth-of-type(4):before { content: "RhynoSE03 Max"; }
+        }
+    </style>
+</head>
+<body>
+    <table style="border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr>
+                <th>Specification</th>
+                <th>RhynoSE03 Lite</th>
+                <th>RhynoSE03</th>
+                <th>RhynoSE03 Max</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Battery</td>
+                <td>1.8Kwh LFP with 1500 cycles<br>Active Balancing<br>Waterproof (IP67)</td>
+                <td>2.7Kwh LFP with 1500 cycles<br>Active Balancing<br>Waterproof (IP67)</td>
+                <td>2.7Kwh LFP with 1500 cycles<br>Active Balancing<br>Waterproof (IP67)</td>
+            </tr>
+            <tr>
+                <td>Battery Warranty</td>
+                <td>3 Years</td>
+                <td>3 Years</td>
+                <td>3 Years</td>
+            </tr>
+            <tr>
+                <td>Charging Time</td>
+                <td>3 hours (12A)</td>
+                <td>4 hours (12A)</td>
+                <td>4 hours (12A)</td>
+            </tr>
+            <tr>
+                <td>Motor</td>
+                <td>1500W</td>
+                <td>1500W</td>
+                <td>2000W</td>
+            </tr>
+            <tr>
+                <td>Max Speed</td>
+                <td>55 km/h</td>
+                <td>55 km/h</td>
+                <td>65 km/h</td>
+            </tr>
+            <tr>
+                <td>Warranty on Electronics</td>
+                <td>1 Year</td>
+                <td>1 Year</td>
+                <td>1 Year</td>
+            </tr>
+            <tr>
+                <td>Max Range (@30 km/h)</td>
+                <td>100 km</td>
+                <td>150 km</td>
+                <td>120 km</td>
+            </tr>
+            <tr>
+                <td>Max Range (@45 km/h)</td>
+                <td>90 km</td>
+                <td>110 km</td>
+                <td>100 km</td>
+            </tr>
+            <tr>
+                <td>Max Range (@full speed)</td>
+                <td>60 km</td>
+                <td>90 km</td>
+                <td>80 km</td>
+            </tr>
+            <tr>
+                <td>Other Key Benefits</td>
+                <td>Contact Us<br>Fire-safe Battery<br>Range Prediction<br>Comfortable Ride<br>Stable and Safe</td>
+                <td>Fire-safe Battery<br>Range Prediction<br>Comfortable Ride<br>Stable and Safe</td>
+                <td>Fire-safe Battery<br>Range Prediction<br>Comfortable Ride<br>Stable and Safe</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+
+
+</body>
+</html>

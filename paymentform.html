@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <style>/* Style the form container */
+#payment-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style form input fields */
+input[type="text"],
+#card-element {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+</style>
+</head>
+<body>
+    <form id="payment-form">
+        <!-- Your payment form fields here -->
+        <input type="text" id="card-holder-name" placeholder="Card Holder Name">
+        <div id="card-element"><!-- Stripe.js injects the Card Element --></div>
+        <button type="submit">Submit Payment</button>
+    </form>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('your_public_stripe_key');
+        var elements = stripe.elements();
+
+        var cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        var form = document.getElementById('payment-form');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createToken(cardElement).then(function(result) {
+                if (result.error) {
+                    // Inform the user if there was an error
+                    console.error(result.error.message);
+                } else {
+                    // Send the token to your server
+                    fetch('/process-payment.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            stripeToken: result.token.id,
+                            amount: 1000, // Amount in cents
+                            currency: 'usd'
+                        })
+                    }).then(function(response) {
+                        if (response.ok) {
+                            // Payment successful, redirect to success page
+                            window.location.href = 'success.html';
+                        } else {
+                            // Payment failed, redirect to error page
+                            window.location.href = 'error.html';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

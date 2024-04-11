@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhyno EV Payment</title>
+    <link rel="stylesheet" type="text/css" href="payment.css">
+</head>
+<body>
+    <h1>Checkout</h1>
+    <!-- Your checkout form -->
+    <form action="paymentform.html" method="post">
+        <label for="card_number">Card Number</label>
+        <input type="text" id="card_number" name="card_number" required>
+        <!-- Other payment fields -->
+        <button type="submit">Pay Now</button>
+    </form>
+    
+    <!-- Include the JavaScript SDK for your chosen payment gateway -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        // Your JavaScript code to initialize and handle the payment process
+        // Example for Stripe
+        var stripe = Stripe('your_stripe_public_key');
+        var elements = stripe.elements();
+        // Create an instance of the card Element
+        var card = elements.create('card');
+        // Add an instance of the card Element into the `card-element` div
+        card.mount('#card-element');
+    </script>
+</body>
+</html>
